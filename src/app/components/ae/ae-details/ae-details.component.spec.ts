@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AeDetailsComponent } from './ae-details.component';
@@ -8,7 +9,8 @@ describe('AeDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AeDetailsComponent ]
+      imports:[HttpClientModule],
+      providers: [ AeDetailsComponent ]
     })
     .compileComponents();
 
