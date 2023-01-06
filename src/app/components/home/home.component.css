@@ -1,0 +1,39 @@
+/*.outer{
+    height: 100vh;
+    background: linear-gradient(to top, #c9dbea 50%, #8399aa 90%) no-repeat;
+}*/
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh;
+    background: url('src\assets\image\stage-healthcare-industry.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    opacity: 80%;
+    overflow: hidden;
+}
+
+.box{
+    width: 600px;
+    height: 500px;
+    box-shadow: none;
+    text-align: left;
+   /* line-height: 300px;*/
+    border-radius: 10px;
+    padding: 60px;
+    margin-top: 100px;
+}
+
+header{
+    position: fixed;  
+    left: 0;  
+    top: 0;  
+    width: 100%;  
+    z-index:1; /*Add this*/  
+    display: block;  
+}

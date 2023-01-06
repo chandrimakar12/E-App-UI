@@ -1,0 +1,4 @@
+.btn-outline-info:disabled {
+    color: #555656;
+    background-color: transparent;
+}

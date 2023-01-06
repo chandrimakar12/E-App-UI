@@ -1,0 +1,5 @@
+.btn-primary:disabled {
+    color: rgb(10, 10, 10);
+    background-color: #5a5a5a;
+    border-color: #007bff;
+}

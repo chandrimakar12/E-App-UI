@@ -1,0 +1,136 @@
+<input #checkbox1 type="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+
+
+<div class="container">
+
+</div>
+
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm" (ngSubmit)="submit(myForm)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 box">
+                    <input type="hidden" name="id" [value]="hcoinfoService.hcoinfoData.id">
+
+                    <label class="float-left" for="organizationName">Organization Name</label>
+                    <div *ngIf="organizationName.dirty && organizationName.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div><span class="text-danger" *ngIf="organizationName.touched && organizationName.hasError('pattern')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*Only alphabates allowed)</span>
+
+                    <input type="text" name="organizationName" class="form-control" placeholder="Enter HCO name" #organizationName="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.organizationName" required pattern="[A-Za-z\s]+">
+                    
+                </div>
+
+                <div class="col-md-6 box">
+                    <label class="float-left" for="address">Address</label>
+                    <div *ngIf="address.invalid && (address.touched || address.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <textarea type="text" name="address" class="form-control" placeholder="Enter Address" #address="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.address" required></textarea>                    
+                </div>
+                
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="country">Country</label>
+                    <div *ngIf="country.invalid && (country.touched || country.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <select name="country" class="form-control" placeholder="Country" #country="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.country" (change)="onSelect($event)" required>
+                        <option >Select Country</option>
+                        <option *ngFor="let countries of countree" value="{{countries.id}}">{{countries.name}}</option>
+                     </select>                      
+                </div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="state">State</label>
+                    <div *ngIf="state.invalid && (state.touched || state.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <select type="text" name="state" class="form-control" placeholder="State" #state="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.state" required> 
+                        <option>Select State</option>
+                        <option *ngFor="let states of statee">{{states.name}}</option>                  
+                    </select>
+                    </div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="city">City</label>
+                    <div *ngIf="city.dirty && city.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div><span class="text-danger" *ngIf="city.touched && city.hasError('pattern')">*Only alphabates allowed</span>
+                    <input type="text" name="city" class="form-control" placeholder="City" #city="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.city" required pattern="[A-Za-z\s]+">                   
+                    </div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="zipCode">Zip Code</label>
+                    <div *ngIf="zipCode.dirty && zipCode.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="text" name="zipCode" class="form-control" placeholder="000000" #zipCode="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.zipCode" required pattern="[0-9]{6}">                   
+               <span class="text-danger" *ngIf="zipCode.touched && zipCode.hasError('pattern')">*Zip Code must be of 6 digits</span> </div>
+
+                <div class="col-md-6 box">
+                    <label class="float-left" for="email">HCO Email</label>
+                    <div *ngIf=" email.dirty && email.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="email" name="email" class="form-control" placeholder="username@example.com" #email="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">                   
+                    <span class="text-danger" *ngIf="email.touched && email.hasError('pattern')">*Invalid pattern</span> </div>
+
+                <div class="col-md-6 box">
+                    <label class="float-left" for="webSite">Website</label>
+                    <div *ngIf="webSite.dirty && webSite.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="url" name="webSite" class="form-control" #webSite="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.webSite" required placeholder="https://example.com" pattern="http(s?)(:\/\/)((www.)?)([a-zA-z0-9\-_]+)(.com)">                   
+                    <span class="text-danger" *ngIf="webSite.touched && webSite.hasError('pattern')">*Invalid pattern</span></div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="primaryContact">Primary Contact</label>
+                    <div *ngIf="primaryContact.invalid && (primaryContact.touched || primaryContact.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="text" name="primaryContact" class="form-control" placeholder="Primary Contact" #primaryContact="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.primaryContact" required>                   
+                </div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="primaryContactPhone">Primary Contact Phone</label>
+                    <div *ngIf="primaryContactPhone.dirty && primaryContactPhone.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="tel" name="primaryContactPhone" class="form-control" placeholder="Primary Contact Phone" #primaryContactPhone="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.primaryContactPhone" required pattern="[0-9]{10}">                   
+                    <span class="text-danger" *ngIf="primaryContactPhone.touched && primaryContactPhone.hasError('pattern')">*Contact must be of 10 digits</span></div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="secondaryContact">Secondary Contact</label>
+                    <div *ngIf="secondaryContact.invalid && (secondaryContact.touched || secondaryContact.dirty)" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="text" name="secondaryContact" class="form-control" placeholder="Secondary Contact" #secondaryContact="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.secondaryContact" required>                   
+                </div>
+
+                <div class="col-md-3 box">
+                    <label class="float-left" for="secondaryContactPhone">Secondary Contact Phone</label>
+                    <div *ngIf="secondaryContactPhone.dirty && secondaryContactPhone.hasError('required')" class="float-right">
+                        <p class="text-danger">Required</p>
+                    </div>
+                    <input type="tel" name="secondaryContactPhone" class="form-control" placeholder="Secondary Contact Phone" #secondaryContactPhone="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.secondaryContactPhone" required pattern="[0-9]{10}">                   
+                    <span class="text-danger" *ngIf="secondaryContactPhone.touched && secondaryContactPhone.hasError('pattern')">*Contact must be of 10 digits</span></div>
+                
+            </div>
+            
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="!myForm.form.valid">Save</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+

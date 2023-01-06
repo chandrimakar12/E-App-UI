@@ -1,0 +1,118 @@
+<input #checkbox1 type="checkbox" name="toggle" id="toggle">
+<label for="toggle"></label>
+
+
+<div class="container">
+
+</div>
+
+<div class="formAdd">
+    <form autocomplete="off" #myForm="ngForm" (ngSubmit)="myForm.form.valid && submit(myForm)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="hidden" name="id" [value]="hcoinfoService.hcoinfoData.id">
+
+                    <label class="float-left" for="organizationName">Organization Name</label>
+                    
+                    <input type="text" name="organizationName" class="form-control"  #organizationName="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.organizationName" disabled>
+
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="address">Address</label>
+                    
+                    <textarea type="text" name="address" class="form-control"  #address="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.address" disabled></textarea>                    
+                </div>
+
+
+                <div class="col-md-3">
+                    <label class="float-left" for="country">Country</label>
+                   
+                    <select name="country" class="form-control" placeholder="Country" #country="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.country"  disabled>
+                        <option >Select Country</option>
+                        <option *ngFor="let countries of countree" value="{{countries.id}}">{{countries.name}}</option>
+                     </select>                    
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="state">State</label>
+                    
+                    <input type="text" name="state" class="form-control"  #state="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.state" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="city">City</label>
+                    
+                    <input type="text" name="city" class="form-control"  #city="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.city" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="zipCode">Zip Code</label>
+                    
+                    <input type="text" name="zipCode" class="form-control"  #zipCode="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.zipCode" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="email">HCO Email</label>
+                    
+                    <input type="email" name="email" class="form-control"  #email="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.email" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="webSite">Website</label>
+                    
+                    <input type="text" name="webSite" class="form-control"  #webSite="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.webSite" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="primaryContact">Primary Contact</label>
+                    
+                    <input type="text" name="primaryContact" class="form-control"  #primaryContact="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.primaryContact" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="primaryContactPhone">Primary Contact Phone</label>
+                    
+                    <input type="tel" name="primaryContactPhone" class="form-control"  #primaryContactPhone="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.primaryContactPhone" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="secondaryContact">Secondary Contact</label>
+                    
+                    <input type="text" name="secondaryContact" class="form-control"  #secondaryContact="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.secondaryContact" disabled>                   
+                </div>
+
+                <div class="col-md-3">
+                    <label class="float-left" for="secondaryContactPhone">Secondary Contact Phone</label>
+                    
+                    <input type="tel" name="secondaryContactPhone" class="form-control"  #secondaryContactPhone="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.secondaryContactPhone" disabled>                   
+                </div>
+                
+            </div>
+            <br>
+            <div class="col-md-3">
+                <label for="status" class="float-left">Status :</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="radiobtn" name="status" id="approved" value="Approved" (change)="onChange($event)" #status="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.status" checked required>
+                    <label for="Approved" class="radiolbl text-success">Approve</label>&nbsp;&nbsp;
+                    <input type="radio" class="radiobtn" name="status" id="rejected" value="Rejected" (change)="onChange($event)" #status="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.status" checked required>
+                    <label for="Approved" class="radiolbl text-danger">Reject</label>
+
+                
+
+            </div>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2 float-right">
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="!myForm.form.valid">Update status</button>
+                </div>
+                <!--<div class="col-md-2">
+                    <button type="reset" class="btn btn-danger btn-block">Reject</button>
+                </div>-->
+
+            </div>
+        </div>
+    </form>
+</div>
+
