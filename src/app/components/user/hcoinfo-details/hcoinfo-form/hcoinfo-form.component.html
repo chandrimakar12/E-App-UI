@@ -117,6 +117,14 @@
                     <input type="tel" name="secondaryContactPhone" class="form-control" placeholder="Secondary Contact Phone" #secondaryContactPhone="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.secondaryContactPhone" required pattern="[0-9]{10}">                   
                     <span class="text-danger" *ngIf="secondaryContactPhone.touched && secondaryContactPhone.hasError('pattern')">*Contact must be of 10 digits</span></div>
                 
+                    <div class="col-md-12 box">
+                        <label class="float-left" for="programs">Programs to be Accredited</label>
+                        <div *ngIf="programs.dirty && programs.hasError('required')" class="float-right">
+                            <p class="text-danger">Required</p>
+                        </div>
+                        <input type="tel" name="programs" class="form-control" placeholder="Programs to be Accredited" #programs="ngModel" [(ngModel)]="hcoinfoService.hcoinfoData.programs" required >
+                    </div>
+                
             </div>
             
             <br><br><br>
