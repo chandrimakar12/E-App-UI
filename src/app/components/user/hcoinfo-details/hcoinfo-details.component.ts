@@ -58,8 +58,17 @@ export class HcoinfoDetailsComponent implements OnInit {
   }
 
   refreshInfo(){
-    this.hcoinfoService.getAllHcoinfo().subscribe(res=> {
-      this.hcoinfoService.listHcoinfo = res.data;
+    this.loginStore.getUserNameFromStore()
+   .subscribe(val=>{
+    const userNameFromToken = this.auth.getuserNameFromToken()
+    this.userName = val || userNameFromToken
+   });
+   
+   console.log(this.userName);
+
+   const name= this.userName
+    this.hcoinfoService.getInfoByUsername(name).subscribe(res=> {
+      this.hcoinfoService.listByName = res.data;
     });
   }
 

@@ -13,17 +13,16 @@ export class AeDetailsComponent implements OnInit {
 
  // listApprove:Hcoinfo[]=[];
  public userName : string ="";
-
+ 
+ public status :string="Submitted";
 
   constructor(public hcoinfoService:HcoinfoServiceService,private auth: AuthService, private loginStore : LoginStoreService) { }
 
   //const obj2:any = Object.assign({}, obj1);
 
   ngOnInit() {
-    
-
-    const status = "Submitted";
-    this.hcoinfoService.getInfoByStatus(status).subscribe(result=>{
+  
+    this.hcoinfoService.getInfoByStatus(this.status).subscribe(result=>{
       this.hcoinfoService.listApprove=result.data;
     });
 
@@ -43,8 +42,9 @@ export class AeDetailsComponent implements OnInit {
   }
 
   refreshInfo(){
-    this.hcoinfoService.getAllHcoinfo().subscribe(res=> {
-      this.hcoinfoService.listHcoinfo = res.data;
+    
+    this.hcoinfoService.getInfoByStatus(this.status).subscribe(res=> {
+      this.hcoinfoService.listApprove = res.data;
     });
   }
 
