@@ -18,7 +18,7 @@
 
 
 
-<div class="container" *ngIf="hcoinfoService.listHcoinfo?.length"><table class="table table-bordered" >
+<div class="container" *ngIf="hcoinfoService.listApprove?.length"><table class="table table-bordered" >
     <thead class="thead-dark">
         <tr>
             <th>Id</th>
@@ -34,7 +34,7 @@
         </tr>
     </thead>
     <tbody >
-        <tr *ngFor="let info of hcoinfoService.listHcoinfo" [hidden]="info.status!='Submitted'">
+        <tr *ngFor="let info of hcoinfoService.listApprove" >
             <td>{{info.id}}</td>
             <td>{{info.organizationName}}</td>
             <td>{{info.address}}</td>
@@ -58,6 +58,6 @@
 </div>
 
 
-<div class="container" *ngIf="!hcoinfoService.listHcoinfo?.length">
-    <b style="font-weight: bold;font-size:xx-large;">No Records Available</b>
+<div class="container" *ngIf="!hcoinfoService.listApprove?.length">
+    <b style="font-weight: bold;font-size:xx-large;">No Records Available for Approval</b>
 </div>

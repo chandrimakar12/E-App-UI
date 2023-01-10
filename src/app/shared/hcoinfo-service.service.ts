@@ -49,6 +49,11 @@ export class HcoinfoServiceService {
     return this.http.get<any>(this.baseUrl+'GetRecordsbyName?userName='+userName);
   }
 
+  getInfoByStatus(status:any):Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl+'GetRecordsbyStatus?status='+status);
+  }
+
   country(){
 
     return [

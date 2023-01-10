@@ -21,13 +21,11 @@ export class AeDetailsComponent implements OnInit {
 
   ngOnInit() {
     
-    this.hcoinfoService.getAllHcoinfo().subscribe(result=>{
-      this.hcoinfoService.listHcoinfo=result.data;
-    });
 
-    if(this.hcoinfoService.hcoinfoData.status=="Submitted"){
-      this.hcoinfoService.listApprove= [...this.hcoinfoService.listHcoinfo];
-    }
+    const status = "Submitted";
+    this.hcoinfoService.getInfoByStatus(status).subscribe(result=>{
+      this.hcoinfoService.listApprove=result.data;
+    });
 
     console.log(this.hcoinfoService.listApprove);
     this.loginStore.getUserNameFromStore()
