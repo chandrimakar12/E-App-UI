@@ -14,7 +14,7 @@ export class AeDetailsComponent implements OnInit {
  // listApprove:Hcoinfo[]=[];
  public userName : string ="";
  
- public status :string="Submitted";
+ public status ="Submitted";
 
   constructor(public hcoinfoService:HcoinfoServiceService,private auth: AuthService, private loginStore : LoginStoreService) { }
 
