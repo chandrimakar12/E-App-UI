@@ -12,6 +12,7 @@ export class Hcoinfo {
     primaryContactPhone: number;
     secondaryContact: string;
     secondaryContactPhone: number;
+    programs : string;
     status: string;
     submittedBy: string;
 
